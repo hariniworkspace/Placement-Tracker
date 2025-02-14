@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search by Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .item {
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search by Filter</h1>
+  <input type="text" id="searchInput" placeholder="Search items...">
+  <div id="itemContainer">
+    <div class="item">Apple</div>
+    <div class="item">Banana</div>
+    <div class="item">Cherry</div>
+    <div class="item">Date</div>
+    <div class="item">Elderberry</div>
+    <div class="item">Fig</div>
+    <div class="item">Grape</div>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('.item');
+
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(filter)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
